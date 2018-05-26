@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView txtString;
     Button asynchronousGet, synchronousGet, asynchronousPOST;
-
-    public String url = "";//"https://reqres.in/api/users/2";
+    private String request_constructor,key,request_url,domain,track_code;
+    public String url ;//"https://reqres.in/api/users/2";
     public String postUrl = "https://reqres.in/api/users/";
     public String postBody = "{\n" +
             "    \"name\": \"morpheus\",\n" +
@@ -43,7 +43,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        url=getResources().getString(R.string.my_url);
+        request_constructor=getResources().getString(R.string.request_constructor);
+        key=getResources().getString(R.string.key);
+        request_url=getResources().getString(R.string.url);
+        domain=getResources().getString(R.string.domain);
+        track_code=getResources().getString(R.string.track_code);
+
+        url=String.format(request_constructor,request_url,key,domain,track_code);
 
         asynchronousGet = (Button) findViewById(R.id.asynchronousGet);
         synchronousGet = (Button) findViewById(R.id.synchronousGet);
@@ -107,7 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         try {
 
                             JSONObject json = new JSONObject(myResponse);
-                            txtString.setText("First Name: "+json.getJSONObject("data").getString("first_name") + "\nLast Name: " + json.getJSONObject("data").getString("last_name"));
+                           // txtString.setText("First Name: "+json.getJSONObject("data").getString("first_name") + "\nLast Name: " + json.getJSONObject("data").getString("last_name"));
+                            txtString.setText(myResponse);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
