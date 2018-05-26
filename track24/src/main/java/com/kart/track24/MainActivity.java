@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         track_code=getResources().getString(R.string.track_code);
 
         url=String.format(request_constructor,request_url,key,domain,track_code);
-
+        Log.d("TAG123", utils.getUserName().get("Monday").toString());
         asynchronousGet = (Button) findViewById(R.id.asynchronousGet);
         synchronousGet = (Button) findViewById(R.id.synchronousGet);
         asynchronousPOST = (Button) findViewById(R.id.asynchronousPost);
