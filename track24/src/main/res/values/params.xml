@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="key">6b2628a463a4d57b3562943d31a9ea9d</string>
+    <string name="url">https://api.track24.ru/tracking.json.php</string>
+    <string name="domain">track24.ru</string>
+    <string name="track_code">RY120105317CN</string>
+    <string name="request_constructor">%1$s?apiKey=%2$s&amp;domain=%3$s&amp;code=%4$s</string>
+    <string name="my_url">https://reqres.in/api/users/2</string>
+
+
+</resources>

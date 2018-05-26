@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView txtString;
     Button asynchronousGet, synchronousGet, asynchronousPOST;
 
-    public String url = "https://reqres.in/api/users/2";
+    public String url = "";//"https://reqres.in/api/users/2";
     public String postUrl = "https://reqres.in/api/users/";
     public String postBody = "{\n" +
             "    \"name\": \"morpheus\",\n" +
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        url=getResources().getString(R.string.my_url);
 
         asynchronousGet = (Button) findViewById(R.id.asynchronousGet);
         synchronousGet = (Button) findViewById(R.id.synchronousGet);
