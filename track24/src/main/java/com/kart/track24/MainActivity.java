@@ -23,13 +23,13 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
+import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     TextView txtString;
     Button asynchronousGet, synchronousGet, asynchronousPOST;
-    private String request_constructor,key,request_url,domain,track_code;
+    private String request_constructor,key,request_url,domain,track_code,create_table_sql;
     public String url ;//"https://reqres.in/api/users/2";
     public String postUrl = "https://reqres.in/api/users/";
     public String postBody = "{\n" +
@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
         request_constructor=getResources().getString(R.string.request_constructor);
         key=getResources().getString(R.string.key);
         request_url=getResources().getString(R.string.url);
@@ -50,7 +54,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         track_code=getResources().getString(R.string.track_code);
 
         url=String.format(request_constructor,request_url,key,domain,track_code);
-        Log.d("TAG123", utils.getUserName().get("Monday").toString());
+
+        create_table_sql=getResources().getString(R.string.create_table_tracks);
+        database_handler db = new database_handler(this,create_table_sql,"contacts");
+        db.addContact(new track("Empty and One contact", "806800000"));
+
+
+        Log.d("TAG123", String.valueOf(db.getContactsCount()));
+
+        System.out.println("Reading all contacts..");
+        List <track> contacts = db.getAllContacts();
+        for (track cn : contacts) {
+            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();
+            System.out.print("Name: ");
+            System.out.println(log);
+        }
+
+        //Log.d("TAG123", utils.getUserName().get("Monday").toString());
         asynchronousGet = (Button) findViewById(R.id.asynchronousGet);
         synchronousGet = (Button) findViewById(R.id.synchronousGet);
         asynchronousPOST = (Button) findViewById(R.id.asynchronousPost);
