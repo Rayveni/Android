@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="create_table_tracks">"CREATE TABLE IF NOT EXISTS %1$s (id INTEGER PRIMARY KEY ,name TEXT, phone_number  TEXT ) "  "</string>
+    <string name="create_table_tracks2">"CREATE TABLE IF NOT EXISTS %1$s (CONSTRAINT id INTEGER PRIMARY KEY ,name TEXT, phone_number  TEXT ) "  "</string>
+    <string name="create_table_tracks3">"CREATE TABLE IF NOT EXISTS %1$s
+        (CONSTRAINT id INTEGER PRIMARY KEY
+                     ,invoiceNumber INTEGER
+                     ,invoiceDate DATE
+                     ,customerName TEXT
+                    ,customerAddress TEXT
+                    , invoiceAmount  INTEGER
+                    ,amountDue INTEGER) "  "</string>
 
-</resources>
+
+    <string name="create_table_tracks">
+        <![CDATA[
+
+
+           CREATE TABLE IF NOT EXISTS %1$s
+                     ( id INTEGER PRIMARY KEY
+                     ,invoiceNumber INTEGER
+                     ,invoiceDate DATE
+                     ,customerName TEXT
+                    ,customerAddress TEXT
+                    , invoiceAmount  INTEGER
+                      ,amountDue INTEGER)
+
+        ]]>
+    </string>
+    </resources>
+
+
+
+
